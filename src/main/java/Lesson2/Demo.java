@@ -1,6 +1,6 @@
-package Lesson1;
+package Lesson2;
 
-import Lesson2.ProductDAO;
+import Lesson1.Product;
 
 import java.util.ArrayList;
 import java.util.Arrays;
