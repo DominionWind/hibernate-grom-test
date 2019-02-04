@@ -4,20 +4,14 @@ import org.hibernate.Session;
 
 public class Demo {
     public static void main(String[] args) {
-        Session session = new HibernateUtils().createSession().openSession();
-
-        session.getTransaction().begin();
-
+        ProductRepository productRepository = new ProductRepository();
         Product product = new Product();
-        product.setId(999334534);
-        product.setName("table");
-        product.setDescription("black & white");
-        product.setPrice(70);
+        product.setId(987);
+        product.setName("TestDemo");
+        product.setDescription("32167");
+        product.setPrice(1488);
 
-        session.save(product);
+        productRepository.save(product);
 
-        session.getTransaction().commit();
-
-        System.out.println("Done");
     }
 }
