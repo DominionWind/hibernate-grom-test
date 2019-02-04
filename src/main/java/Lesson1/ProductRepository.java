@@ -1,11 +1,12 @@
 package Lesson1;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductRepository {
+public class ProductRepository extends HibernateUtils{
 
     public Product save(Product product) {
         Session session = new HibernateUtils().createSession().openSession();
@@ -13,11 +14,12 @@ public class ProductRepository {
             session.getTransaction().begin();
             session.save(product);
             session.getTransaction().commit();
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             session.getTransaction().rollback();
             e.getStackTrace();
         } finally {
             session.close();
+            shutDown();
         }
         return product;
     }
@@ -28,11 +30,12 @@ public class ProductRepository {
             session.getTransaction().begin();
             session.update(product);
             session.getTransaction().commit();
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             session.getTransaction().rollback();
             e.getStackTrace();
         } finally {
             session.close();
+            shutDown();
         }
         return product;
     }
@@ -45,7 +48,7 @@ public class ProductRepository {
             product.setId(id);
             session.delete(product);
             session.getTransaction().commit();
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             session.getTransaction().rollback();
             e.getStackTrace();
         } finally {
@@ -60,11 +63,12 @@ public class ProductRepository {
             session.getTransaction().begin();
             products.add((Product) session.createQuery("FROM PRODUCT").list());
             session.getTransaction().commit();
-        } catch (Exception e) {
+        } catch (HibernateException e) {
             session.getTransaction().rollback();
             e.getStackTrace();
         } finally {
             session.close();
+
         }
         return products;
     }
