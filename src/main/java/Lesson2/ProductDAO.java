@@ -36,6 +36,7 @@ public class ProductDAO {
                 session.close();
             }
         }
+        System.out.println("All products was save");
         return products;
     }
 
@@ -112,6 +113,7 @@ public class ProductDAO {
                 session.close();
             }
         }
+        System.out.println("Done");
         return product;
     }
 

@@ -13,7 +13,6 @@ public class Product {
     @Id
     @SequenceGenerator(name = "PR_SEQ", sequenceName = "PRODUCT_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PR_SEQ")
-
     @Column(name = "ID")
     public long getId() {
         return id;

@@ -3,7 +3,6 @@ package Lesson2;
 import Lesson1.Product;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Demo {
     public static void main(String[] args) {
@@ -11,7 +10,7 @@ public class Demo {
         Product product = new Product();
         product.setName("TestDemo");
         product.setDescription("32167");
-        product.setPrice(1488);
+        product.setPrice(34524);
 
         Product product1 = new Product();
         product1.setName("dfgdfg");
@@ -28,19 +27,23 @@ public class Demo {
         product3.setDescription("vozMMF");
         product3.setPrice(357951);
 
-        ArrayList<Product> products = (ArrayList<Product>) Arrays.asList(product1,product2,product3);
+        ArrayList<Product> products = new ArrayList<>();
+        products.add(product1);
+        products.add(product2);
+        products.add(product3);
 
 
-        productDAO.save(product);
+
+//        productDAO.save(product);
 //        System.out.println(productRepository.read().toString());
-        productDAO.delete(777);
-        product.setPrice(2488);
-        productDAO.equals(product);
+//        productDAO.delete(777);
+//        product.setPrice(2488);
+//        productDAO.equals(product);
 
         productDAO.saveProducts(products);
 
-        productDAO.updateProducts(products);
+//        productDAO.updateProducts(products);
 
-        productDAO.deleteProducts(products);
+//        productDAO.deleteProducts(products);
     }
 }
