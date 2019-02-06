@@ -34,16 +34,11 @@ public class Demo {
 
 
 
-//        productDAO.save(product);
-//        System.out.println(productRepository.read().toString());
-//        productDAO.delete(777);
-//        product.setPrice(2488);
-//        productDAO.equals(product);
 
         productDAO.saveProducts(products);
 
-//        productDAO.updateProducts(products);
+        productDAO.updateProducts(products);
 
-//        productDAO.deleteProducts(products);
+        productDAO.deleteProducts(products);
     }
 }

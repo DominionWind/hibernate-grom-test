@@ -12,5 +12,8 @@
         <property name="hibernate.connection.password">Utarasta287</property>
 
         <mapping class="Lesson1.Product"></mapping>
+        <mapping class="Lesson2.HQL.Product"></mapping>
+        <mapping class="Lesson2.NSQL.Product"></mapping>
+        <mapping class="Lesson2.Product"></mapping>
     </session-factory>
 </hibernate-configuration>
