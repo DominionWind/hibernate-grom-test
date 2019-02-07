@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ProductDAO_HQL {
 
-    private SessionFactory sessionFactory;
+    public SessionFactory sessionFactory;
 
     public Product findById(long id) {
         try {
@@ -19,6 +19,7 @@ public class ProductDAO_HQL {
             e.printStackTrace();
             System.err.println("Can`t find Product by Id " + id);
         }
+        sessionFactory.close();
         System.out.println("findById Done");
         return null;
     }
@@ -32,6 +33,7 @@ public class ProductDAO_HQL {
             e.printStackTrace();
             System.err.println("Can`t find Product by Name " + name);
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -44,6 +46,7 @@ public class ProductDAO_HQL {
             e.printStackTrace();
             System.err.println("Can`t find Product by Name " + name);
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -56,6 +59,7 @@ public class ProductDAO_HQL {
             e.printStackTrace();
             System.err.println("Can`t find Product by price " + price + " with delta " + delta);
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -68,6 +72,7 @@ public class ProductDAO_HQL {
             e.printStackTrace();
             System.err.println("Can`t find Products by price " + name + " and sort them ACC");
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -80,6 +85,7 @@ public class ProductDAO_HQL {
             e.printStackTrace();
             System.err.println("Can`t find Products by price " + name + " and sort them DEC");
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -92,6 +98,7 @@ public class ProductDAO_HQL {
             e.printStackTrace();
             System.err.println("Can`t find Products by price " + price + " with delta " + delta + " and sort them DEC");
         }
+        sessionFactory.close();
         return null;
     }
 

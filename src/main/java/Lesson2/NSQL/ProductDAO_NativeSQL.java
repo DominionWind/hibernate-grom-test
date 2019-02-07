@@ -23,12 +23,12 @@ public class ProductDAO_NativeSQL {
         try {
             Session session = createSessionFactory().openSession();
             return (Product) session.createNativeQuery(findById)
-                    .setParameter("product_id", id)
-                    .addEntity(Product.class).getSingleResult();
+                    .setParameter("product_id", id).addEntity(Product.class).getSingleResult();
         } catch (HibernateException e) {
             e.printStackTrace();
             System.err.println("Can`t find Product by Id " + id);
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -41,6 +41,7 @@ public class ProductDAO_NativeSQL {
             e.printStackTrace();
             System.err.println("Can`t find Product by Name " + name);
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -53,6 +54,7 @@ public class ProductDAO_NativeSQL {
             e.printStackTrace();
             System.err.println("Can`t find Product by Name " + name);
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -66,6 +68,7 @@ public class ProductDAO_NativeSQL {
             e.printStackTrace();
             System.err.println("Can`t find Product by price " + price + " with delta " + delta);
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -78,6 +81,7 @@ public class ProductDAO_NativeSQL {
             e.printStackTrace();
             System.err.println("Can`t find Products by price " + name + " and sort them ACC");
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -90,6 +94,7 @@ public class ProductDAO_NativeSQL {
             e.printStackTrace();
             System.err.println("Can`t find Products by price " + name + " and sort them DEC");
         }
+        sessionFactory.close();
         return null;
     }
 
@@ -103,6 +108,7 @@ public class ProductDAO_NativeSQL {
             e.printStackTrace();
             System.err.println("Can`t find Products by price " + price + " with delta " + delta + " and sort them DEC");
         }
+        sessionFactory.close();
         return null;
     }
 

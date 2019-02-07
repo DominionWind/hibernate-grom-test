@@ -36,6 +36,7 @@ public class ProductDAO {
                 session.close();
             }
         }
+        sessionFactory.close();
         System.out.println("All products was save");
         return products;
     }
@@ -63,6 +64,7 @@ public class ProductDAO {
                 session.close();
             }
         }
+        sessionFactory.close();
         return products;
     }
 
@@ -89,6 +91,7 @@ public class ProductDAO {
                 session.close();
             }
         }
+        sessionFactory.close();
         return products;
     }
 
@@ -113,6 +116,7 @@ public class ProductDAO {
                 session.close();
             }
         }
+        sessionFactory.close();
         System.out.println("Done");
         return product;
     }
@@ -138,6 +142,7 @@ public class ProductDAO {
                 session.close();
             }
         }
+        sessionFactory.close();
         return product;
     }
 
@@ -164,6 +169,7 @@ public class ProductDAO {
                 session.close();
             }
         }
+        sessionFactory.close();
     }
 
     public SessionFactory createSessionFactory() {

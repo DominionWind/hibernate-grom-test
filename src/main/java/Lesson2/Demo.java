@@ -34,11 +34,12 @@ public class Demo {
 
 
 
+        productDAO.save(product);
 
-        productDAO.saveProducts(products);
+//        productDAO.saveProducts(products);
 
-        productDAO.updateProducts(products);
+//        productDAO.updateProducts(products);
 
-        productDAO.deleteProducts(products);
+//        productDAO.deleteProducts(products);
     }
 }
