@@ -15,5 +15,7 @@
         <mapping class="Lesson2.HQL.Product"></mapping>
         <mapping class="Lesson2.NSQL.Product"></mapping>
         <mapping class="Lesson2.Product"></mapping>
+        <mapping class="Lesson3.Main.Hotel"></mapping>
+        <mapping class="Lesson3.Main.Room"></mapping>
     </session-factory>
 </hibernate-configuration>
