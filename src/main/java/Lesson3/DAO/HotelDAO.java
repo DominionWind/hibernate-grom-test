@@ -1,6 +1,5 @@
 package Lesson3.DAO;
 
-import Lesson1.Product;
 import Lesson3.Main.Hotel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
