@@ -1,0 +1,22 @@
+CREATE TABLE ROOM(
+ID NUMBER,
+CONSTRAINT ROOM_ID PRIMARY KEY (ID),
+NUMBER_OF_GUESTS NUMBER NOT NULL,
+PRICE FLOAT,
+BREAKFAST_INCLUDED NUMBER CHECK (BREAKFAST_INCLUDED = 0 or BREAKFAST_INCLUDED = 1) DEFAULT 1,
+PETS_ALLOWED NUMBER CHECK (PETS_ALLOWED = 0 OR PETS_ALLOWED = 1) DEFAULT 0,
+DATE_FROM DATA
+HOTEL_ID REFERENCES HOTEL(ID)
+);
+
+CREATE SEQUENCE ROOM_SEQ START WITH 1 INCREMENT BY 1;
+
+
+
+    private long id;
+    private int numbersOfGuests;
+    private double price;
+    private boolean breakfastIncluded;
+    private boolean petsAllowed;
+    private Date dateAvailableFrom;
+    private Hotel hotel;

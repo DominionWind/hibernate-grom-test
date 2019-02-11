@@ -17,5 +17,9 @@
         <mapping class="Lesson2.Product"></mapping>
         <mapping class="Lesson3.Main.Hotel"></mapping>
         <mapping class="Lesson3.Main.Room"></mapping>
+        <mapping class="Lesson4.model.User"></mapping>
+        <mapping class="Lesson4.model.Order"></mapping>
+        <mapping class="Lesson4.model.Hotel"></mapping>
+        <mapping class="Lesson4.model.Room"></mapping>
     </session-factory>
 </hibernate-configuration>
