@@ -1,6 +1,5 @@
 package Lesson4.DAO;
 
-import Lesson4.model.Order;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,7 +12,7 @@ public class GeneralDAO<T> {
 
     private SessionFactory sessionFactory;
 
-    public T save(T t) {
+    protected T save(T t) {
         Session session = null;
         Transaction tr = null;
         try {
@@ -39,7 +38,7 @@ public class GeneralDAO<T> {
         return t;
     }
 
-    public T update(T t){
+    protected T update(T t){
         Session session = null;
         Transaction tr = null;
         try {
@@ -64,7 +63,7 @@ public class GeneralDAO<T> {
         return t;
     }
 
-    public void delete(long id){
+    protected void delete(long id){
         Session session = null;
         Transaction tr = null;
         try {
@@ -88,7 +87,7 @@ public class GeneralDAO<T> {
         sessionFactory.close();
     }
 
-    public T findById(long id) throws Exception{
+    protected T findById(long id) throws Exception{
         try (Session session = createSessionFactory().openSession()) {
             return session.get(tClass, id);
         } catch (HibernateException e) {
@@ -105,8 +104,4 @@ public class GeneralDAO<T> {
         }
         return sessionFactory;
     }
-
-
-
-
 }
