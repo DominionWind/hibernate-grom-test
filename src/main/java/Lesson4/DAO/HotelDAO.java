@@ -1,6 +1,7 @@
 package Lesson4.DAO;
 
 import Lesson4.model.Hotel;
+import Lesson4.model.Room;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,11 +11,15 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 
 
-public class HotelDAO extends GeneralDAO{
+public class HotelDAO extends GeneralDAO {
+
+    public HotelDAO() {
+        setClass(Hotel.class);
+    }
 
     private SessionFactory sessionFactory;
 
-    public Hotel findHotelByName(String name){
+    public Hotel findHotelByName(String name) {
         Session session = null;
         Transaction tr = null;
         Hotel hotel = new Hotel();
@@ -41,17 +46,34 @@ public class HotelDAO extends GeneralDAO{
         return hotel;
     }
 
-    public List<Hotel> findHotelsByCity(String city){
-        try{
+    public List<Hotel> findHotelsByCity(String city) {
+        try {
             Session session = createSessionFactory().openSession();
             return (List<Hotel>) session.createQuery("FROM HOTEL WHERE CITY =:hotelCity")
                     .setParameter("hotelCity", city).list();
-        } catch (HibernateException e){
+        } catch (HibernateException e) {
             e.printStackTrace();
-            System.err.println("Can`t find Hotel by city " + city);
+            System.err.println("Error!!! Can`t find Hotel by city " + city);
         }
         sessionFactory.close();
+        System.out.println("Can`t find Hotel by city " + city);
         return null;
+    }
+
+    public Room saveHotel(Hotel hotel) {
+        return (Room) save(hotel);
+    }
+
+    public void deleteHotel(long id) {
+        delete(id);
+    }
+
+    public Hotel updateHotel(Hotel hotel) {
+        return (Hotel) update(hotel);
+    }
+
+    public Hotel findHotelById(long id) throws Exception {
+        return (Hotel) findById(id);
     }
 
     public SessionFactory createSessionFactory() {

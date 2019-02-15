@@ -9,8 +9,11 @@ import org.hibernate.cfg.Configuration;
 public class GeneralDAO<T> {
 
     private Class<T> tClass;
-
     private SessionFactory sessionFactory;
+
+    public final void setClass(Class<T> setClass) {
+        this.tClass = setClass;
+    }
 
     protected T save(T t) {
         Session session = null;
@@ -38,7 +41,7 @@ public class GeneralDAO<T> {
         return t;
     }
 
-    protected T update(T t){
+    protected T update(T t) {
         Session session = null;
         Transaction tr = null;
         try {
@@ -63,7 +66,7 @@ public class GeneralDAO<T> {
         return t;
     }
 
-    protected void delete(long id){
+    protected void delete(long id) {
         Session session = null;
         Transaction tr = null;
         try {
@@ -87,11 +90,22 @@ public class GeneralDAO<T> {
         sessionFactory.close();
     }
 
-    protected T findById(long id) throws Exception{
+    protected T findById(long id) throws Exception {
         try (Session session = createSessionFactory().openSession()) {
             return session.get(tClass, id);
         } catch (HibernateException e) {
             System.err.println("Can`t find by id " + id);
+            System.err.println(e.getMessage());
+        }
+        sessionFactory.close();
+        return null;
+    }
+
+    protected T findByName(String name) throws Exception {
+        try (Session session = createSessionFactory().openSession()) {
+            return session.get(tClass, name);
+        } catch (HibernateException e) {
+            System.err.println("Can`t find by name " + name);
             System.err.println(e.getMessage());
         }
         sessionFactory.close();

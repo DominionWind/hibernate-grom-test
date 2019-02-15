@@ -1,23 +1,35 @@
 package Lesson4.DAO;
 
+import Lesson4.model.Filter;
 import Lesson4.model.Room;
+
+import java.util.List;
 
 public class RoomDAO extends GeneralDAO {
 
-    
-
-    public Room getRoomById(long id){
-        Room room = new Room();
-        return room =
-
+    public RoomDAO() {
+        setClass(Room.class);
     }
 
-    public Room voidRoom(long roomId, long userId, long hotelId) throws Exception {
-        Room room = new Room();
-        room =
+    public List<Room> findRooms(Filter filter) {
 
+        return null;
+    }
 
+    protected Room saveRoom(Room room) {
+        return (Room) save(room);
+    }
 
+    protected void deleteRoom(long id) {
+        delete(id);
+    }
+
+    protected Room updateRoom(Room room) {
+        return (Room) update(room);
+    }
+
+    protected Room findRoomById(long id) throws Exception {
+        return (Room) findById(id);
     }
 
 }

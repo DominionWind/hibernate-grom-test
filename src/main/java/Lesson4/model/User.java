@@ -1,5 +1,7 @@
 package Lesson4.model;
 
+import Lesson4.utils.UserType;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
