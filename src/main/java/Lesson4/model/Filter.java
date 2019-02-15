@@ -21,8 +21,6 @@ import java.util.Date;
             this.hotel = hotel;
         }
 
-
-
         public long getId() {
             return id;
         }
