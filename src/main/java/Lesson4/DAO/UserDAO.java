@@ -2,14 +2,14 @@ package Lesson4.DAO;
 
 import Lesson4.model.User;
 
-public class UserDAO extends GeneralDAO {
+public class UserDAO extends GeneralDAO<User> {
 
     public UserDAO() {
         setClass(User.class);
     }
 
     public User saveUser(User user) {
-        return (User) save(user);
+        return save(user);
     }
 
     public void deleteUser(long id) {
@@ -17,15 +17,15 @@ public class UserDAO extends GeneralDAO {
     }
 
     public User updateUser(User user) {
-        return (User) update(user);
+        return update(user);
     }
 
     public User findUserById(long id) throws Exception {
-        return (User) findById(id);
+        return findById(id);
     }
 
     public User findUserByName(String name) throws Exception {
-        return (User) findByName(name);
+        return findByName(name);
     }
 
 }

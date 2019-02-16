@@ -10,7 +10,7 @@ import org.hibernate.cfg.Configuration;
 
 import java.util.List;
 
-public class RoomDAO extends GeneralDAO {
+public class RoomDAO extends GeneralDAO<Room> {
 
     public RoomDAO() {
         setClass(Room.class);
@@ -32,7 +32,7 @@ public class RoomDAO extends GeneralDAO {
     }
 
     protected Room saveRoom(Room room) {
-        return (Room) save(room);
+        return save(room);
     }
 
     protected void deleteRoom(long id) {
@@ -40,11 +40,11 @@ public class RoomDAO extends GeneralDAO {
     }
 
     protected Room updateRoom(Room room) {
-        return (Room) update(room);
+        return update(room);
     }
 
     protected Room findRoomById(long id) throws Exception {
-        return (Room) findById(id);
+        return findById(id);
     }
 
     private boolean confirmedRoom(Filter filter, Room room) {

@@ -11,7 +11,7 @@ import org.hibernate.cfg.Configuration;
 import java.util.List;
 
 
-public class HotelDAO extends GeneralDAO {
+public class HotelDAO extends GeneralDAO<Hotel> {
 
     public HotelDAO() {
         setClass(Hotel.class);
@@ -60,8 +60,8 @@ public class HotelDAO extends GeneralDAO {
         return null;
     }
 
-    public Room saveHotel(Hotel hotel) {
-        return (Room) save(hotel);
+    public Hotel saveHotel(Hotel hotel) {
+        return save(hotel);
     }
 
     public void deleteHotel(long id) {
@@ -69,11 +69,11 @@ public class HotelDAO extends GeneralDAO {
     }
 
     public Hotel updateHotel(Hotel hotel) {
-        return (Hotel) update(hotel);
+        return update(hotel);
     }
 
     public Hotel findHotelById(long id) throws Exception {
-        return (Hotel) findById(id);
+        return findById(id);
     }
 
     public SessionFactory createSessionFactory() {
