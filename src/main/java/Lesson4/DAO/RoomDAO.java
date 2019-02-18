@@ -17,19 +17,7 @@ public class RoomDAO extends GeneralDAO<Room> {
     }
     private SessionFactory sessionFactory;
 
-    public List<Room> findRooms(Filter filter) {
-        try {
-            Session session = createSessionFactory().openSession();
-            return (List<Hotel>) session.createQuery("FROM ROOM WHERE ROOM =:roomParam")
-                    .setParameter("roomParam", room).list();
-        } catch (HibernateException e) {
-            e.printStackTrace();
-            System.err.println("Error!!! Can`t find Room by filter ");
-        }
-        sessionFactory.close();
-        System.out.println("Can`t find any rooms by city ");
-        return null;
-    }
+
 
     protected Room saveRoom(Room room) {
         return save(room);
@@ -39,11 +27,11 @@ public class RoomDAO extends GeneralDAO<Room> {
         delete(id);
     }
 
-    protected Room updateRoom(Room room) {
+    public Room updateRoom(Room room) {
         return update(room);
     }
 
-    protected Room findRoomById(long id) throws Exception {
+    public Room findRoomById(long id) throws Exception {
         return findById(id);
     }
 
