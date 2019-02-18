@@ -25,27 +25,27 @@ public class User {
         return id;
     }
 
-    @Column(name="USER_NAME")
+    @Column(name = "USER_NAME")
     public String getUserName() {
         return userName;
     }
 
-    @Column(name="PASSWORD")
+    @Column(name = "PASSWORD")
     public String getPassword() {
         return password;
     }
 
-    @Column(name="COUNTRY")
+    @Column(name = "COUNTRY")
     public String getCountry() {
         return country;
     }
 
-    @Column(name="TYPE")
+    @Column(name = "TYPE")
     public UserType getType() {
         return type;
     }
 
-    @OneToMany (cascade = CascadeType.ALL, mappedBy = "user",fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     public List<Order> getOrders() {
         return orders;
     }
