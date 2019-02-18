@@ -6,40 +6,75 @@ import Lesson4.DAO.UserDAO;
 import Lesson4.model.Order;
 import Lesson4.model.Room;
 import Lesson4.model.User;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 import java.util.Date;
 import java.util.List;
 
 public class OrderService extends OrderDAO {
 
-    RoomDAO roomDAO = new RoomDAO();
-    UserDAO userDAO = new UserDAO();
+    private RoomDAO roomDAO = new RoomDAO();
+    private UserDAO userDAO = new UserDAO();
+
+    private SessionFactory sessionFactory;
 
     protected void book_Room(long roomId, long userId, long HotelId) throws Exception {
         Room room = roomDAO.findRoomById(roomId);
         User user = userDAO.findUserById(userId);
         Order order = new Order();
+
         order.setUser(user);
         order.setRoom(room);
+
         Date dateFrom = new Date();
         Date dateTo = new Date();
+
         order.setDateFrom(dateFrom);
         order.setDateTo(dateTo);
+
         order.setMoneyPaid(room.getPrice() * (dateFrom.getTime() - dateTo.getTime()));
 
         room.setDateAvailableFrom(dateFrom);
-        saveOrder(order);
-        roomDAO.updateRoom(room);
+
+        Session session = null;
+        Transaction tr = null;
+
+        try {
+            session = createSessionFactory().openSession();
+            tr = session.getTransaction();
+            tr.begin();
+
+            saveOrder(order);
+            roomDAO.updateRoom(room);
+
+            tr.commit();
+        } catch (HibernateException e) {
+
+            System.err.println("Transaction is failed");
+            System.err.println(e.getMessage());
+
+            if (tr != null) {
+                tr.rollback();
+            }
+        } finally {
+            if (session != null) {
+                session.close();
+            }
+        }
     }
 
+
     protected void cancel_Reservation(long roomId, long userId) throws Exception {
-        //Этот метод я намеренно обрабатываю не в БД. Могу и в БД его сделать.
+        //        Этот метод я намеренно обрабатываю не в БД. Могу и в БД его сделать.
+        //        SQL Запрос будет выглядеть так.
+        //        SELECT * FROM ORDERS
+        //        WHERE ROOM_ID = ? AND USER_ID = ?;
 
-
-        // SELECT *
-        // FROM ORDER                               Как то так будет выглядеть SQL запрос. со 100% вероятностью пока не умею
-        // JOIN ON ORDER.USER_ID=USER.USER_ID
-        // JOIN ORDER.ROOM_ID ON ROOM.ROOM_ID.
+        //
 
         User user = userDAO.findUserById(userId);
         Room room = roomDAO.findRoomById(roomId);
@@ -53,5 +88,12 @@ public class OrderService extends OrderDAO {
                 roomDAO.updateRoom(room);
             }
         }
+    }
+
+    public SessionFactory createSessionFactory() {
+        if (sessionFactory == null) {
+            sessionFactory = new Configuration().configure().buildSessionFactory();
+        }
+        return sessionFactory;
     }
 }

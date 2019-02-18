@@ -8,7 +8,7 @@ import java.util.List;
 public class HotelService extends HotelDAO {
 
     protected Hotel findHotelByNameServ(String name){
-        return findHotelByName(name);
+        return findHotelBy_Name(name);
     }
 
     protected List<Hotel> findHotelsByCityServ(String city){

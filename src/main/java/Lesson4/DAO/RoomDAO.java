@@ -15,9 +15,6 @@ public class RoomDAO extends GeneralDAO<Room> {
     public RoomDAO() {
         setClass(Room.class);
     }
-    private SessionFactory sessionFactory;
-
-
 
     protected Room saveRoom(Room room) {
         return save(room);
@@ -55,13 +52,6 @@ public class RoomDAO extends GeneralDAO<Room> {
         return false;
         }
         return true;
-    }
-
-    public SessionFactory createSessionFactory() {
-        if (sessionFactory == null) {
-            sessionFactory = new Configuration().configure().buildSessionFactory();
-        }
-        return sessionFactory;
     }
 
 }

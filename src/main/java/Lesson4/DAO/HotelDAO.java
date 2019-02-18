@@ -19,7 +19,7 @@ public class HotelDAO extends GeneralDAO<Hotel> {
 
     private SessionFactory sessionFactory;
 
-    public Hotel findHotelByName(String name) {
+    public Hotel findHotelBy_Name(String name) {
         Session session = null;
         Transaction tr = null;
         Hotel hotel = new Hotel();

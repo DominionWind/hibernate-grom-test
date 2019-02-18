@@ -13,13 +13,27 @@ import java.util.List;
 
 public class RoomService extends RoomDAO {
 
+    private String SQL_QUERY_FILTER = "FROM ROOM " +
+            "JOIN HOTEL ON HOTEL_ID = ?" +
+            "WHERE NUMBER_OF_GUESTS =:numberOfGuests" +
+            "AND PRICE =:price" +
+            "AND BREAKFAST_INCLUDED =:breacfastIncluded" +
+            "AND PETS_ALLOWED =:petsAllowed" +
+            "AND DATE_FROM =:dateFrom" +
+            "AND HOTEL =:hotel";
+
     private SessionFactory sessionFactory;
 
     public List<Room> findRooms(Filter filter) {
         try {
             Session session = createSessionFactory().openSession();
-            return (List<Hotel>) session.createQuery("FROM ROOM WHERE ROOM =:roomParam")
-                    .setParameter("roomParam", room).list();
+            return (List<Room>) session.createQuery(SQL_QUERY_FILTER)
+                    .setParameter("numberOfGuests", filter.getNumbersOfGuests())
+                    .setParameter("price", filter.getPrice())
+                    .setParameter("breacfastIncluded", filter.isBreakfastIncluded())
+                    .setParameter("petsAllowed", filter.isPetsAllowed())
+                    .setParameter("dateFrom", filter.getDateAvailableFrom())
+                    .setParameter("hotel", filter.getHotel()).list();
         } catch (HibernateException e) {
             e.printStackTrace();
             System.err.println("Error!!! Can`t find Room by filter " + filter.toString());
@@ -28,6 +42,13 @@ public class RoomService extends RoomDAO {
         System.out.println("Can`t find any rooms by city ");
         return null;
     }
+
+//    private int numbersOfGuests;
+//    private double price;
+//    private boolean breakfastIncluded;
+//    private boolean petsAllowed;
+//    private Date dateAvailableFrom;
+//    private Hotel hotel;
 
     public SessionFactory createSessionFactory() {
         if (sessionFactory == null) {
