@@ -1,12 +1,9 @@
 package Lesson4.DAO;
 
 import Lesson4.model.Hotel;
-import Lesson4.model.Room;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+
 
 import java.util.List;
 
@@ -17,33 +14,18 @@ public class HotelDAO extends GeneralDAO<Hotel> {
         setClass(Hotel.class);
     }
 
-    private SessionFactory sessionFactory;
 
-    public Hotel findHotelBy_Name(String name) {
-        Session session = null;
-        Transaction tr = null;
-        Hotel hotel = new Hotel();
+    public List<Hotel> findHotelsBy_Name(String name) {
         try {
-            session = createSessionFactory().openSession();
-            tr = session.getTransaction();
-            tr.begin();
-            hotel = session.get(Hotel.class, "name");
-            tr.commit();
+            Session session = createSessionFactory().openSession();
+            return (List<Hotel>) session.createQuery("FROM HOTEL WHERE NAME =:hotelName")
+                    .setParameter("hotelName", name).list();
         } catch (HibernateException e) {
-            System.err.println("Can`t find hotel with name " + name);
-            System.err.println(e.getMessage());
-
-            if (tr != null) {
-                tr.rollback();
-            }
-        } finally {
-            if (session != null) {
-                session.close();
-            }
+            e.printStackTrace();
+            System.err.println("Error!!! Can`t find Hotel by name " + name);
         }
-        sessionFactory.close();
-        System.out.println("Done");
-        return hotel;
+        System.out.println("Can`t find Hotel by name " + name);
+        return null;
     }
 
     public List<Hotel> findHotelsByCity(String city) {
@@ -55,7 +37,6 @@ public class HotelDAO extends GeneralDAO<Hotel> {
             e.printStackTrace();
             System.err.println("Error!!! Can`t find Hotel by city " + city);
         }
-        sessionFactory.close();
         System.out.println("Can`t find Hotel by city " + city);
         return null;
     }
@@ -74,12 +55,5 @@ public class HotelDAO extends GeneralDAO<Hotel> {
 
     public Hotel findHotelById(long id) throws Exception {
         return findById(id);
-    }
-
-    public SessionFactory createSessionFactory() {
-        if (sessionFactory == null) {
-            sessionFactory = new Configuration().configure().buildSessionFactory();
-        }
-        return sessionFactory;
     }
 }

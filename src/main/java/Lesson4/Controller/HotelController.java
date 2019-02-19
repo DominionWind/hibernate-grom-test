@@ -7,7 +7,7 @@ import java.util.List;
 
 public class HotelController extends HotelService {
 
-    public Hotel findHotelByName(String hotelName){
+    public List<Hotel> findHotelByName(String hotelName){
         return findHotelByNameServ(hotelName);
     }
 

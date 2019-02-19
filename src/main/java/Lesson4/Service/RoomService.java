@@ -38,7 +38,7 @@ public class RoomService extends RoomDAO {
             e.printStackTrace();
             System.err.println("Error!!! Can`t find Room by filter " + filter.toString());
         }
-        sessionFactory.close();
+//        sessionFactory.close();
         System.out.println("Can`t find any rooms by city ");
         return null;
     }

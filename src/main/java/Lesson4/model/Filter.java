@@ -11,16 +11,6 @@ import java.util.Date;
     private Date dateAvailableFrom;
     private Hotel hotel;
 
-        public Filter(long id, int numbersOfGuests, double price, boolean breakfastIncluded, boolean petsAllowed, Date dateAvailableFrom, Hotel hotel) {
-            this.id = id;
-            this.numbersOfGuests = numbersOfGuests;
-            this.price = price;
-            this.breakfastIncluded = breakfastIncluded;
-            this.petsAllowed = petsAllowed;
-            this.dateAvailableFrom = dateAvailableFrom;
-            this.hotel = hotel;
-        }
-
         public long getId() {
             return id;
         }

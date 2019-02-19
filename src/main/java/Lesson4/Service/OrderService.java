@@ -8,9 +8,8 @@ import Lesson4.model.Room;
 import Lesson4.model.User;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.Configuration;
+
 
 import java.util.Date;
 import java.util.List;
@@ -20,7 +19,6 @@ public class OrderService extends OrderDAO {
     private RoomDAO roomDAO = new RoomDAO();
     private UserDAO userDAO = new UserDAO();
 
-    private SessionFactory sessionFactory;
 
     protected void book_Room(long roomId, long userId, long HotelId) throws Exception {
         Room room = roomDAO.findRoomById(roomId);
@@ -88,12 +86,5 @@ public class OrderService extends OrderDAO {
                 roomDAO.updateRoom(room);
             }
         }
-    }
-
-    public SessionFactory createSessionFactory() {
-        if (sessionFactory == null) {
-            sessionFactory = new Configuration().configure().buildSessionFactory();
-        }
-        return sessionFactory;
     }
 }
