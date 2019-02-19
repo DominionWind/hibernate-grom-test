@@ -37,7 +37,6 @@ public class GeneralDAO<T>{
             }
         }
         sessionFactory.close();
-        System.out.println("Done");
         return t;
     }
 

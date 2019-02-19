@@ -65,7 +65,6 @@ public class OrderService extends OrderDAO {
         }
     }
 
-
     protected void cancel_Reservation(long roomId, long userId) throws Exception {
         //        Этот метод я намеренно обрабатываю не в БД. Могу и в БД его сделать.
         //        SQL Запрос будет выглядеть так.
