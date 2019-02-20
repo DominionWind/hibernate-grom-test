@@ -11,7 +11,7 @@ public class Hotel {
     private String country;
     private String city;
     private String street;
-    private List<Room> rooms;
+    private List rooms;
 
     @Id
     @SequenceGenerator(name = "HOTEL_SEQ", sequenceName = "HOTEL_PK_SEQ", allocationSize = 1)
@@ -42,8 +42,7 @@ public class Hotel {
         return street;
     }
 
-    @ManyToOne
-    @JoinColumn (name ="HOTEL_ID")
+    @OneToMany (targetEntity = Room.class, cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
     public List<Room> getRooms() {
         return rooms;
     }

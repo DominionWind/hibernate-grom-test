@@ -22,14 +22,14 @@ public class Order {
         return id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID")
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
     public User getUser() {
         return user;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ROOM_ID", referencedColumnName = "ID")
+    @ManyToOne
+    @JoinColumn(name = "ROOM_ID")
     public Room getRoom() {
         return room;
     }

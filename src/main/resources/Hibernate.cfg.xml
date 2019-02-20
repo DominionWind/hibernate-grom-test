@@ -11,15 +11,16 @@
         <property name="hibernate.connection.username">main</property>
         <property name="hibernate.connection.password">Utarasta287</property>
 
-        <mapping class="Lesson1.Product"></mapping>
-        <mapping class="Lesson2.HQL.Product"></mapping>
-        <mapping class="Lesson2.NSQL.Product"></mapping>
-        <mapping class="Lesson2.Product"></mapping>
-        <mapping class="Lesson3.Main.Hotel"></mapping>
-        <mapping class="Lesson3.Main.Room"></mapping>
+        <!--<mapping class="Lesson1.Product"></mapping>-->
+        <!--<mapping class="Lesson2.HQL.Product"></mapping>-->
+        <!--<mapping class="Lesson2.NSQL.Product"></mapping>-->
+        <!--<mapping class="Lesson2.Product"></mapping>-->
+        <!--<mapping class="Lesson3.Main.Hotel"></mapping>-->
+        <!--<mapping class="Lesson3.Main.Room"></mapping>-->
         <mapping class="Lesson4.model.User"></mapping>
         <mapping class="Lesson4.model.Order"></mapping>
         <mapping class="Lesson4.model.Hotel"></mapping>
         <mapping class="Lesson4.model.Room"></mapping>
+        <mapping class="Lesson4.utils.UserType"></mapping>
     </session-factory>
 </hibernate-configuration>

@@ -32,6 +32,7 @@ public class GeneralDAO<T>{
                 tr.rollback();
             }
         }
+        sessionFactory.close();
         return t;
     }
 
@@ -52,6 +53,7 @@ public class GeneralDAO<T>{
                 tr.rollback();
             }
         }
+        sessionFactory.close();
         return t;
     }
 
@@ -72,6 +74,7 @@ public class GeneralDAO<T>{
                 tr.rollback();
             }
         }
+        sessionFactory.close();
     }
 
     protected T findById(long id) throws Exception {
@@ -92,6 +95,7 @@ public class GeneralDAO<T>{
             System.err.println("Can`t find by name " + name);
             System.err.println(e.getMessage());
         }
+        sessionFactory.close();
         return null;
     }
 

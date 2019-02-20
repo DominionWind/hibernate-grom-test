@@ -48,8 +48,8 @@ public class Room {
         return dateAvailableFrom;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "hotel", fetch = FetchType.LAZY)
-    @Column(name = "HOTEL_ID")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "HOTEL_ID", nullable = false)
     public Hotel getHotel() {
         return hotel;
     }
