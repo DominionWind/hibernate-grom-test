@@ -48,7 +48,7 @@ public class Room {
         return dateAvailableFrom;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "HOTEL_ID", nullable = false)
     public Hotel getHotel() {
         return hotel;
