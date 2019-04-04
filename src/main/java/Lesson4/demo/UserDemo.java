@@ -1,6 +1,6 @@
-package Lesson4.Demo;
+package Lesson4.demo;
 
-import Lesson4.Controller.UserController;
+import Lesson4.controller.UserController;
 import Lesson4.model.User;
 import Lesson4.utils.UserType;
 

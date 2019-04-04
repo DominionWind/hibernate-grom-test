@@ -1,6 +1,6 @@
-package Lesson4.Service;
+package Lesson4.service;
 
-import Lesson4.DAO.HotelDAO;
+import Lesson4.dao.HotelDAO;
 import Lesson4.model.Hotel;
 
 import java.util.List;

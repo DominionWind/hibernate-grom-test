@@ -1,6 +1,6 @@
-package Lesson4.Controller;
+package Lesson4.controller;
 
-import Lesson4.Service.RoomService;
+import Lesson4.service.RoomService;
 import Lesson4.model.Filter;
 import Lesson4.model.Room;
 

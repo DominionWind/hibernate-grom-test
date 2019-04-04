@@ -9,7 +9,7 @@ import java.util.List;
 @Entity
 @Table(name = "User")
 public class User {
-    private long id;
+    private Long id;
     private String userName;
     private String password;
     private String country;
@@ -17,11 +17,11 @@ public class User {
     private List<Order> orders;
 
     @Id
-    @SequenceGenerator(name = "USER_SEQ", sequenceName = "USER_PK_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
+    @SequenceGenerator(name = "ITEM_S", sequenceName = "ITEM_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_S")
 
     @Column(name = "ID")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -50,7 +50,7 @@ public class User {
         return orders;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

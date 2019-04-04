@@ -1,6 +1,6 @@
-package Lesson4.Demo;
+package Lesson4.demo;
 
-import Lesson4.Controller.HotelController;
+import Lesson4.controller.HotelController;
 
 public class HotelDemo {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package Lesson4.DAO;
+package Lesson4.dao;
 
 import Lesson4.model.Order;
 

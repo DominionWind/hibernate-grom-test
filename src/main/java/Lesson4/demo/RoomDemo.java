@@ -1,7 +1,6 @@
-package Lesson4.Demo;
+package Lesson4.demo;
 
-import Lesson4.Controller.RoomController;
-import Lesson4.DAO.RoomDAO;
+import Lesson4.controller.RoomController;
 import Lesson4.model.Filter;
 
 public class RoomDemo {

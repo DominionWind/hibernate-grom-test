@@ -1,6 +1,6 @@
-package Lesson4.Controller;
+package Lesson4.controller;
 
-import Lesson4.Service.UserService;
+import Lesson4.service.UserService;
 import Lesson4.model.User;
 
 public class UserController extends UserService {

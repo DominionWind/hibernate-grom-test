@@ -1,6 +1,6 @@
-package Lesson4.Controller;
+package Lesson4.controller;
 
-import Lesson4.Service.OrderService;
+import Lesson4.service.OrderService;
 
 public class OrderController extends OrderService {
 

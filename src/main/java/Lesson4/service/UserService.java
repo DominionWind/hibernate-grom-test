@@ -1,6 +1,6 @@
-package Lesson4.Service;
+package Lesson4.service;
 
-import Lesson4.DAO.UserDAO;
+import Lesson4.dao.UserDAO;
 import Lesson4.model.User;
 import Lesson4.utils.Session;
 

@@ -1,8 +1,8 @@
-package Lesson4.Service;
+package Lesson4.service;
 
-import Lesson4.DAO.OrderDAO;
-import Lesson4.DAO.RoomDAO;
-import Lesson4.DAO.UserDAO;
+import Lesson4.dao.OrderDAO;
+import Lesson4.dao.RoomDAO;
+import Lesson4.dao.UserDAO;
 import Lesson4.model.Order;
 import Lesson4.model.Room;
 import Lesson4.model.User;

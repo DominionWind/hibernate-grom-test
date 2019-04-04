@@ -1,4 +1,4 @@
-package Lesson4.DAO;
+package Lesson4.dao;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -32,7 +32,6 @@ public class GeneralDAO<T>{
                 tr.rollback();
             }
         }
-        sessionFactory.close();
         return t;
     }
 
@@ -53,20 +52,19 @@ public class GeneralDAO<T>{
                 tr.rollback();
             }
         }
-        sessionFactory.close();
         return t;
     }
 
-    protected void delete(long id) {
+    protected void delete(Long id) {
         Session session = null;
         Transaction tr = null;
         try {
             session = createSessionFactory().openSession();
             tr = session.getTransaction();
             tr.begin();
-            session.delete(id);
+            session.delete(findById(id));
             tr.commit();
-        } catch (HibernateException e) {
+        } catch (Exception e) {
             System.err.println("Delete is failed");
             System.err.println(e.getMessage());
 
@@ -74,17 +72,15 @@ public class GeneralDAO<T>{
                 tr.rollback();
             }
         }
-        sessionFactory.close();
     }
 
-    protected T findById(long id) throws Exception {
+    protected T findById(Long id) throws Exception {
         try (Session session = createSessionFactory().openSession()) {
             return session.get(tClass, id);
         } catch (HibernateException e) {
             System.err.println("Can`t find by id " + id);
             System.err.println(e.getMessage());
         }
-        sessionFactory.close();
         return null;
     }
 
@@ -95,7 +91,6 @@ public class GeneralDAO<T>{
             System.err.println("Can`t find by name " + name);
             System.err.println(e.getMessage());
         }
-        sessionFactory.close();
         return null;
     }
 

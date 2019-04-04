@@ -1,8 +1,7 @@
-package Lesson4.Service;
+package Lesson4.service;
 
-import Lesson4.DAO.RoomDAO;
+import Lesson4.dao.RoomDAO;
 import Lesson4.model.Filter;
-import Lesson4.model.Hotel;
 import Lesson4.model.Room;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

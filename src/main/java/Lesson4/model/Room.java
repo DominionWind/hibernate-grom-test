@@ -6,7 +6,7 @@ import java.util.Date;
 @Entity
 @Table(name = "ROOM")
 public class Room {
-    private long id;
+    private Long id;
     private int numbersOfGuests;
     private double price;
     private boolean breakfastIncluded;
@@ -15,11 +15,11 @@ public class Room {
     private Hotel hotel;
 
     @Id
-    @SequenceGenerator(name = "ROOM_SEQ", sequenceName = "ROOM_PK_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ROOM_SEQ")
+    @SequenceGenerator(name = "ITEM_S", sequenceName = "ITEM_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_S")
 
     @Column(name = "ID")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -54,7 +54,7 @@ public class Room {
         return hotel;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 @Table(name = "HOTEL")
 public class Hotel {
-    private long id;
+    private Long id;
     private String name;
     private String country;
     private String city;
@@ -14,11 +14,11 @@ public class Hotel {
     private List rooms;
 
     @Id
-    @SequenceGenerator(name = "HOTEL_SEQ", sequenceName = "HOTEL_PK_SEQ", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "HOTEL_SEQ")
+    @SequenceGenerator(name = "ITEM_S", sequenceName = "ITEM_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_S")
 
     @Column(name = "ID")
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -47,7 +47,7 @@ public class Hotel {
         return rooms;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

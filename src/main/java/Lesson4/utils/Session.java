@@ -1,6 +1,6 @@
 package Lesson4.utils;
 
-import Lesson4.DAO.UserDAO;
+import Lesson4.dao.UserDAO;
 import Lesson4.model.User;
 
 public class Session {
