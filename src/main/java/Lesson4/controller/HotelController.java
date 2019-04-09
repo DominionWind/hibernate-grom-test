@@ -5,13 +5,15 @@ import Lesson4.model.Hotel;
 
 import java.util.List;
 
-public class HotelController extends HotelService {
+public class HotelController{
+
+    private HotelService hotelService = new HotelService();
 
     public List<Hotel> findHotelByName(String hotelName){
-        return findHotelByNameServ(hotelName);
+        return hotelService.findHotelByName(hotelName);
     }
 
     public List<Hotel> findHotelByCity(String city){
-        return findHotelsByCityServ(city);
+        return hotelService.findHotelsByCity(city);
     }
 }

@@ -6,10 +6,12 @@ import Lesson4.model.Room;
 
 import java.util.List;
 
-public class RoomController extends RoomService {
+public class RoomController{
+
+    RoomService roomService = new RoomService();
 
     public List<Room> findRoom(Filter filter){
-        return findRooms(filter);
+        return roomService.findDooms(filter);
     }
 
 }

@@ -7,20 +7,18 @@ import Lesson4.model.Order;
 import Lesson4.model.Room;
 import Lesson4.model.User;
 import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 
 import java.util.Date;
 import java.util.List;
 
-public class OrderService extends OrderDAO {
+public class OrderService{
 
+    private OrderDAO orderDAO = new OrderDAO();
     private RoomDAO roomDAO = new RoomDAO();
     private UserDAO userDAO = new UserDAO();
 
 
-    protected void book_Room(long roomId, long userId, long HotelId) throws Exception {
+    public void book_Room(long roomId, long userId, long HotelId) throws Exception {
         Room room = roomDAO.findRoomById(roomId);
         User user = userDAO.findUserById(userId);
         Order order = new Order();
@@ -38,34 +36,15 @@ public class OrderService extends OrderDAO {
 
         room.setDateAvailableFrom(dateFrom);
 
-        Session session = null;
-        Transaction tr = null;
-
         try {
-            session = createSessionFactory().openSession();
-            tr = session.getTransaction();
-            tr.begin();
-
-            saveOrder(order);
             roomDAO.updateRoom(room);
-
-            tr.commit();
         } catch (HibernateException e) {
-
             System.err.println("Transaction is failed");
             System.err.println(e.getMessage());
-
-            if (tr != null) {
-                tr.rollback();
-            }
-        } finally {
-            if (session != null) {
-                session.close();
-            }
         }
     }
 
-    protected void cancel_Reservation(long roomId, long userId) throws Exception {
+    public void cancel_Reservation(long roomId, long userId) throws Exception {
         //        Этот метод я намеренно обрабатываю не в БД. Могу и в БД его сделать.
         //        SQL Запрос будет выглядеть так.
         //        SELECT * FROM ORDERS
@@ -80,7 +59,7 @@ public class OrderService extends OrderDAO {
 
         for (Order order : orders) {
             if (order.getRoom().getId() == roomId) {
-                deleteOrder(order.getId());
+                orderDAO.deleteOrder(order.getId());
                 room.setDateAvailableFrom(new Date());
                 roomDAO.updateRoom(room);
             }

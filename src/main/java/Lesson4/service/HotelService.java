@@ -5,13 +5,15 @@ import Lesson4.model.Hotel;
 
 import java.util.List;
 
-public class HotelService extends HotelDAO {
+public class HotelService{
 
-    protected List<Hotel> findHotelByNameServ(String name){
-        return findHotelsBy_Name(name);
+    HotelDAO hotelDAO = new HotelDAO();
+
+    public List<Hotel> findHotelByName(String name){
+        return hotelDAO.findHotelsBy_Name(name);
     }
 
-    protected List<Hotel> findHotelsByCityServ(String city){
-        return findHotelsByCity(city);
+    public List<Hotel> findHotelsByCity(String city){
+        return hotelDAO.findHotelsByCity(city);
     }
 }
