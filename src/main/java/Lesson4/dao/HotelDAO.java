@@ -14,11 +14,10 @@ public class HotelDAO extends GeneralDAO<Hotel> {
         setClass(Hotel.class);
     }
 
-
     public List<Hotel> findHotelsBy_Name(String name) {
         try {
             Session session = createSessionFactory().openSession();
-            return (List<Hotel>) session.createQuery("FROM HOTEL WHERE NAME =:hotelName")
+            return (List<Hotel>) session.createQuery("FROM Hotel WHERE name =:hotelName")
                     .setParameter("hotelName", name).list();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -31,7 +30,7 @@ public class HotelDAO extends GeneralDAO<Hotel> {
     public List<Hotel> findHotelsByCity(String city) {
         try {
             Session session = createSessionFactory().openSession();
-            return (List<Hotel>) session.createQuery("FROM HOTEL WHERE CITY =:hotelCity")
+            return (List<Hotel>) session.createQuery("FROM Hotel WHERE name =:hotelCity")
                     .setParameter("hotelCity", city).list();
         } catch (HibernateException e) {
             e.printStackTrace();

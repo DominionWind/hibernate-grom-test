@@ -8,8 +8,6 @@ public class OrderDAO extends GeneralDAO<Order> {
         setClass(Order.class);
     }
 
-
-
     public Order saveOrder(Order order) {
         return save(order);
     }

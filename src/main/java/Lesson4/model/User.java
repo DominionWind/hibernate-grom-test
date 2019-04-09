@@ -3,11 +3,10 @@ package Lesson4.model;
 import Lesson4.utils.UserType;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "User")
+@Table(name = "USER")
 public class User {
     private Long id;
     private String userName;
@@ -16,10 +15,10 @@ public class User {
     private UserType type;
     private List<Order> orders;
 
-    @Id
     @SequenceGenerator(name = "ITEM_S", sequenceName = "ITEM_SEQ", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ITEM_S")
 
+    @Id
     @Column(name = "ID")
     public Long getId() {
         return id;
@@ -70,7 +69,7 @@ public class User {
         this.type = type;
     }
 
-    public void setOrders(ArrayList<Order> orders) {
+    public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
 

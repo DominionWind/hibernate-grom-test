@@ -56,7 +56,7 @@ public class GeneralDAO<T>{
     }
 
     protected void delete(Long id) {
-        Session session = null;
+        Session session;
         Transaction tr = null;
         try {
             session = createSessionFactory().openSession();

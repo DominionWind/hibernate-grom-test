@@ -7,8 +7,8 @@ public class HotelDemo {
 
         HotelController hotelController = new HotelController();
 
-        System.out.println(hotelController.findHotelByCity("city"));
+//        System.out.println(hotelController.findHotelByCity("city"));
 
-//        System.out.println(hotelController.findHotelByName("hotel_1"));
+        System.out.println(hotelController.findHotelByName("hotel_1"));
     }
 }
